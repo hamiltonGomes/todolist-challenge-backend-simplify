@@ -1,7 +1,7 @@
 package com.hamiltongomes.todolist.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hamiltongomes.todolist.dtos.TaskCreateDto;
-import com.hamiltongomes.todolist.dtos.TaskUpdateDto;
 import com.hamiltongomes.todolist.enums.TaskPriority;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,24 +18,19 @@ public class Task implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long taskId;
+    private Long id;
     private String name;
     private String description;
-    private boolean isRealized = false;
+    private boolean realized = false;
     @Enumerated(EnumType.STRING)
     private TaskPriority taskPriority;
+    @JsonIgnore
+    private boolean active = true;
 
     public Task(TaskCreateDto taskCreateDto) {
         this.name = taskCreateDto.name();
         this.description = taskCreateDto.description();
-        this.isRealized = taskCreateDto.isRealized();
+        this.realized = taskCreateDto.realized();
         this.taskPriority = taskCreateDto.taskPriority();
-    }
-
-    public Task(TaskUpdateDto taskUpdateDto) {
-        this.name = taskUpdateDto.name();
-        this.description = taskUpdateDto.description();
-        this.isRealized = taskUpdateDto.isRealized();
-        this.taskPriority = taskUpdateDto.taskPriority();
     }
 }

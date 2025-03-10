@@ -7,7 +7,7 @@ public record TaskCreateDto(
         @NotBlank
         String name,
         String description,
-        boolean isRealized,
+        boolean realized,
         TaskPriority taskPriority
 ) {
 }
