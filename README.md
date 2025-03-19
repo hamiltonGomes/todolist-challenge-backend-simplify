@@ -20,18 +20,14 @@ API for task management, developed as part of the **Simplify backend challenge**
 
 ### Database Configuration
 
-1. Create a PostgreSQL database:
-
-```sql
-CREATE DATABASE todolist_challenge_backend_simplify;
-```
-
-2. Update the connection settings in the `src/main/resources/application.properties` file:
+- Update the connection settings in the `src/main/resources/application.properties` file:
 
 ```ini
 spring.datasource.url=jdbc:postgresql://localhost:5432/todolist-challenge-backend-simplify
 spring.datasource.username=your_username
 spring.datasource.password=your_password
+
+spring.jpa.hibernate.ddl-auto=update
 ```
 
 ### Running the Application
